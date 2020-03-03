@@ -40,6 +40,7 @@ Partial Class frrmMobiles
         Me.lstNumbers.Name = "lstNumbers"
         Me.lstNumbers.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.lstNumbers.Size = New System.Drawing.Size(936, 550)
+        Me.lstNumbers.Sorting = System.Windows.Forms.SortOrder.Ascending
         Me.lstNumbers.TabIndex = 0
         Me.lstNumbers.UseCompatibleStateImageBehavior = False
         Me.lstNumbers.View = System.Windows.Forms.View.Details
@@ -52,7 +53,7 @@ Partial Class frrmMobiles
         'ColumnHeader2
         '
         Me.ColumnHeader2.Text = "Mobile Number"
-        Me.ColumnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.ColumnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.ColumnHeader2.Width = 472
         '
         'dlgBrowseFiles

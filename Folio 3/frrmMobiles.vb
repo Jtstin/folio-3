@@ -14,10 +14,14 @@ Public Class frrmMobiles
             fileReader = My.Computer.FileSystem.OpenTextFileReader(dlgBrowseFiles.FileName)
             Dim line As String
             Dim lineNumber As Int32 = 0
+            Dim friends = New List(Of Person)
 
             While Not fileReader.EndOfStream
                 line = fileReader.ReadLine()
                 Dim row = line.Split(",")
+                Dim person As Person = New Person
+                person.Name = row(0) + " " + row(1)
+                person.Mobile = String.Format("{0:(###) ###-####}", Convert.ToInt64(row(2)))
                 lstNumbers.Items.Add(row(0))
                 lstNumbers.Items(lineNumber).SubItems.Add(row(2))
                 lineNumber = lineNumber + 1
