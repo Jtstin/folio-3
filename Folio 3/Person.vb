@@ -1,6 +1,5 @@
 ﻿Public Class Person
     Private _name As String
-
     Public Property Name() As String
         Get
             Return _name
@@ -10,14 +9,12 @@
         End Set
     End Property
 
-    Private _mobile As Long
-
-    Public Property Mobile() As Long
-
+    Private _mobile As String
+    Public Property Mobile() As String
         Get
             Return _mobile
         End Get
-        Set(ByVal value As Long)
+        Set(ByVal value As String)
             _mobile = value
         End Set
     End Property

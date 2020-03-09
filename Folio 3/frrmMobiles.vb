@@ -9,23 +9,27 @@ Public Class frrmMobiles
         dlgBrowseFiles.FileName = "mobiles.txt"
 
         Dim dlgResult = dlgBrowseFiles.ShowDialog()
-        If dlgResult = dlgResult.OK Then
+        If dlgResult = DialogResult.OK Then
             Dim fileReader As System.IO.StreamReader
+            lstNumbers.Items.Clear()
             fileReader = My.Computer.FileSystem.OpenTextFileReader(dlgBrowseFiles.FileName)
             Dim line As String
             Dim lineNumber As Int32 = 0
-            Dim friends = New List(Of Person)
-
             While Not fileReader.EndOfStream
                 line = fileReader.ReadLine()
                 Dim row = line.Split(",")
                 Dim person As Person = New Person
                 person.Name = row(0) + " " + row(1)
-                person.Mobile = String.Format("{0:(###) ###-####}", Convert.ToInt64(row(2)))
-                lstNumbers.Items.Add(row(0))
-                lstNumbers.Items(lineNumber).SubItems.Add(row(2))
+                Dim mobileNumber As String = row(2)
+                person.Mobile = mobileNumber.Substring(0, 4) + " " + mobileNumber.Substring(4, 3) + " " + mobileNumber.Substring(7, 3)
+                lstNumbers.Items.Add(person.Name)
+                lstNumbers.Items(lineNumber).SubItems.Add(person.Mobile)
                 lineNumber = lineNumber + 1
             End While
+            frrmMobiles.ActiveForm.Text = "Friends (file:" + dlgBrowseFiles.FileName + ")"
+            fileReader.Close()
         End If
     End Sub
+
+
 End Class
